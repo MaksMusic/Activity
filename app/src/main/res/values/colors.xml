@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#000000</color>
+    <color name="purple_500">#000000</color>
+    <color name="purple_700">#000000</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="click">#57185EEB</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#AAE2FB</color>
+    <color name="btn">#22000000</color>
+    <color name="btnSpiner">#880060AC</color>
+    <color name="btnSpinerFon">#6298C3</color>
+    <color name="toolbar">#0966B8</color>
+    <color name="btnNew">#8DBFC4DA</color>
+    <color name="textColor">#E6F3F3F6</color>
+    <color name="TL">#19000000</color>
+    <color name="TL2">#5E000000</color>
+    <color name="btnCity">#572253A8</color>
+</resources>

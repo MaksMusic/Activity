@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/noch"
+    android:id="@+id/CL"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:background="@drawable/toolbarbg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:background="@drawable/pogoda"
+            android:layout_width="45dp"
+            android:layout_height="45dp"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:layout_gravity="end"
+            android:id="@+id/spinnerCity"
+            android:textColor="#FF0000"
+            android:layout_marginStart="5dp"
+            android:background="@color/btnSpiner"
+            android:popupBackground="@color/btnSpinerFon"
+            android:layout_width="180dp"
+            android:entries="@array/StringArrayCity"
+            android:layout_height="30dp"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/BtnCity"
+        android:background="@color/btnCity"
+        style="@style/TextViewPrimary"
+        android:textColor="@color/white"
+        android:text="настройки"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        android:textSize="17sp"
+        android:layout_marginStart="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"/>
+
+
+    <TextView
+        android:id="@+id/rndTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:layout_marginTop="45dp"
+        style="@style/TextViewPrimary"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text=""
+        android:textSize="25dp"
+
+
+        />
+
+    <TextView
+        android:id="@+id/day0"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/rndTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="10dp"
+        android:text="Сейчас   "
+        android:textSize="25dp"/>
+
+    <TextView
+        android:id="@+id/pogoda"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/day0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="5dp"
+        android:text=""
+        android:textSize="18dp"/>
+
+    <TextView
+        android:id="@+id/veter"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/pogoda"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingTop="10dp"
+        android:text=""
+        android:textSize="18dp"/>
+
+    <Button
+        android:id="@+id/day1Btn"
+        android:text="Сегодня"
+        style="@style/TextViewPrimary"
+        android:background="@color/btnNew"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/veter"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20dp"
+        />
+
+
+
+
+
+
+    <Button
+        android:id="@+id/day2Btn"
+        android:text="Завтра"
+        style="@style/TextViewPrimary"
+        android:background="@color/btnNew"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/veter"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="20dp"
+        />
+
+
+
+
+
+
+    <TableLayout
+        android:stretchColumns="0,2"
+        android:id="@+id/table2"
+        android:visibility="gone"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/shape_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/day1Btn"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:paddingStart="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+          <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/Time1d2"
+                android:layout_height="match_parent"
+                android:text="День"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/dayd2"
+                android:layout_height="match_parent"
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+            <TextView
+                android:id="@+id/zavtrad2"
+                android:layout_height="match_parent"
+
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/TimeDayd2"
+                android:layout_height="match_parent"
+                android:text="Ночь"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/nochd2"
+                android:layout_height="match_parent"
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+            <TextView
+                android:id="@+id/Time2_day2d2"
+                android:layout_height="match_parent"
+
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+        </TableRow>
+
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time2d2"
+                android:layout_height="match_parent"
+
+                android:text="6:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/Time2_d1d2"
+                android:layout_height="match_parent"
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+            <TextView
+                android:id="@+id/Time2_d2d2"
+                android:layout_height="match_parent"
+
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+    </TableRow>
+
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time3d2"
+                android:layout_height="match_parent"
+
+                android:text="9:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+            <TextView
+                android:id="@+id/Time3_d1d2"
+                android:layout_height="match_parent"
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/Time3_d2d2"
+                android:layout_height="match_parent"
+
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+        </TableRow>
+
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time4d2"
+                android:layout_height="match_parent"
+
+                android:text="12:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+            <TextView
+                android:id="@+id/Time4_d1d2"
+                android:layout_height="match_parent"
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+            <TextView
+                android:id="@+id/Time4_d2d2"
+                android:layout_height="match_parent"
+
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+        </TableRow>
+
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time5d2"
+                android:layout_height="match_parent"
+
+                android:paddingTop="1dp"
+                android:text="15:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/Time5_d1d2"
+                android:layout_height="match_parent"
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+            <TextView
+                android:id="@+id/Time5_d2d2"
+                android:layout_height="match_parent"
+
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+        </TableRow>
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time6d2"
+                android:layout_height="match_parent"
+
+                android:paddingTop="1dp"
+                android:text="18:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+            <TextView
+                android:id="@+id/Time6_d1d2"
+                android:layout_height="match_parent"
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/Time6_d2d2"
+                android:layout_height="match_parent"
+
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+        </TableRow>
+
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time7d2"
+                android:layout_height="match_parent"
+
+                android:paddingTop="1dp"
+                android:text="21:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/Time7_d1d2"
+                android:layout_height="match_parent"
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/Time7_d2d2"
+                android:layout_height="match_parent"
+
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+        </TableRow>
+    </TableLayout>
+
+
+
+
+
+
+    <TableLayout
+        android:stretchColumns="0,2"
+        android:id="@+id/table1"
+        android:visibility="visible"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/shape_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/day1Btn"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:paddingStart="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+    <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/Dayt1"
+                android:layout_height="match_parent"
+                android:text="день"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+
+            <TextView
+                android:id="@+id/Time2Day_d1"
+                android:layout_height="match_parent"
+
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+            <TextView
+                android:id="@+id/zavtra"
+                android:layout_height="match_parent"
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Nocht1"
+                android:layout_height="match_parent"
+                android:text="ночь"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/Time2Noch_d1"
+                android:layout_height="match_parent"
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+            <TextView
+                android:id="@+id/Time2_day2"
+                android:layout_height="match_parent"
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+
+        </TableRow>
+
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time2"
+                android:layout_height="match_parent"
+
+                android:text="6:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+
+            <TextView
+                android:id="@+id/Time2_d1"
+                android:layout_height="match_parent"
+
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+            <TextView
+                android:id="@+id/Time2_d2"
+                android:layout_height="match_parent"
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+
+    </TableRow>
+
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time3"
+                android:layout_height="match_parent"
+                android:text="9:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+            <TextView
+                android:id="@+id/Time3_d1"
+                android:layout_height="match_parent"
+
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+
+            <TextView
+                android:id="@+id/Time3_d2"
+                android:layout_height="match_parent"
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+
+        </TableRow>
+
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time4"
+                android:layout_height="match_parent"
+                android:text="12:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+            <TextView
+                android:id="@+id/Time4_d1"
+                android:layout_height="match_parent"
+
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+            <TextView
+                android:id="@+id/Time4_d2"
+                android:layout_height="match_parent"
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+        </TableRow>
+
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time5"
+                android:layout_height="match_parent"
+                android:paddingTop="1dp"
+                android:text="15:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+
+            <TextView
+                android:id="@+id/Time5_d1"
+                android:layout_height="match_parent"
+
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+            <TextView
+                android:id="@+id/Time5_d2"
+                android:layout_height="match_parent"
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+        </TableRow>
+
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time6"
+                android:layout_height="match_parent"
+                android:paddingTop="1dp"
+                android:text="18:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+            <TextView
+                android:id="@+id/Time6_d1"
+                android:layout_height="match_parent"
+
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/Time6_d2"
+                android:layout_height="match_parent"
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+        </TableRow>
+
+
+
+
+        <TableRow
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/Time7"
+                android:layout_height="match_parent"
+                android:paddingTop="1dp"
+                android:text="21:00"
+                android:textColor="@color/textColor"
+                android:textSize="27dp" />
+
+            <TextView
+                android:id="@+id/Time7_d1"
+                android:layout_height="match_parent"
+
+                android:paddingEnd="50dp"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+
+            <TextView
+                android:id="@+id/Time7_d2"
+                android:layout_height="match_parent"
+                android:text="ясно"
+                android:textColor="@color/textColor"
+                android:textSize="27dp"/>
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="70dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="5dp"
+        android:backgroundTint="@color/blue"
+        android:foreground="@drawable/n"
+        android:background="@color/btnNew"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
