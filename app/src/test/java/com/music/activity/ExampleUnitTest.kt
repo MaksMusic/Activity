@@ -12,6 +12,8 @@ class ExampleUnitTest {
     fun useAppContext() {
 
         println()
+        var news: Document? = null;
+
         lateinit var doc: Document
         lateinit var doc2: Document
         lateinit var docTime: Document
@@ -23,6 +25,10 @@ class ExampleUnitTest {
         lateinit var docday1: Document
         var time: Int = 0;
 
+        news = Jsoup.connect("https://yandex.ru/search/?lr=39&rq=1&text=%D0%BA%D1%83%D1%80%D1%81+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D0%B0&src=rec_on_above")
+            .data("class","ConverterHeader-Rate")
+            .get()
+        println(news.text().toString())
 
         doc = Jsoup.connect("https://www.gismeteo.ru/weather-rostov-na-donu-5110/")
             .data("class", "input js-input").get()
@@ -64,6 +70,8 @@ class ExampleUnitTest {
         var day1 = doc2.getElementsByAttributeValue("class", "weather-icon tooltip") //ясно итд
         var name = doc2.getElementsByAttributeValue("class","page-title")
         println(n5t.text())
+        var news1 = news.getElementsByAttributeValue("class", "ConverterHeader-Rate")
+        println(news1.text().toString())
 
         day[0] = n2[0].text() // сейчас
         day[1] = n2[3].text() // сегодня днем

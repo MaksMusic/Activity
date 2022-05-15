@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.*
 import android.os.AsyncTask
 import android.os.Build
+import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -20,12 +21,14 @@ import androidx.core.content.ContextCompat.getSystemService
 import java.util.*
 
 
+
 val day = Array<String>(40) { "" };
 val day2 = Array<String>(40) { "" };
 
 class T2(var City: String) : Runnable {
 
-    var doc: Document? = null;
+
+    var doc: Document? = null
     var docDay2: Document? = null;
     var doc2: Document? = null;
     var docTime: Document? = null;
@@ -38,15 +41,11 @@ class T2(var City: String) : Runnable {
     private var time: Int = 0;
 
 
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun run() {
-        println(City.toString()+"211111111111111")
         Log.e("CITY:", City.toString())
-        println(City)
-        println("-----------------------------------------------------------" +
-                "-----------------------------------------------------------------" +
-                "-------------------------------------------------------------------------" +
-                "------------------------------")
+
         var docCityHttp = mutableMapOf<String,List<String>>()
 
 
@@ -80,6 +79,15 @@ class T2(var City: String) : Runnable {
             "input js-input",
             "https://www.gismeteo.ru/weather-belidzhi-12497/tomorrow/"))
 
+
+        docCityHttp.put("Псков", listOf(
+            "https://www.gismeteo.ru/weather-pskov-4114/",
+            "https://www.gismeteo.ru/weather-pskov-4114/now/",
+            "class",
+            "input js-input",
+            "https://www.gismeteo.ru/weather-pskov-4114/tomorrow/"))
+
+
         var l:Boolean = false;
 
         try {
@@ -87,9 +95,13 @@ class T2(var City: String) : Runnable {
             for((key, value) in docCityHttp){
                 if (key.equals(City.trim())) {
                     Log.e("CITYT:", key.toString())
-                    Log.e("CITYT:", key.toString())
+
                     l=true;
                     // день 1 градусы
+
+
+
+
                     doc = Jsoup.connect(docCityHttp.get(key)?.get(0))
                         .data(docCityHttp.get(key)?.get(2), docCityHttp.get(key)?.get(3))
                         .get()
@@ -175,7 +187,7 @@ class T2(var City: String) : Runnable {
             day[13] = n2?.get(13)?.text().toString() //21  часов
             day[14] = n5?.text().toString() //время
 
-//завтра
+            //завтра
             day2[1] = n2Day2?.get(2)?.text().toString() // сегодня ночьб
             day2[2] = n2Day2?.get(3)?.text().toString() // сегодня днем
             day2[8] = n2Day2?.get(8)?.text().toString() //6 утра
@@ -184,13 +196,19 @@ class T2(var City: String) : Runnable {
             day2[11] = n2Day2?.get(11)?.text().toString() //15  часов
             day2[12] = n2Day2?.get(12)?.text().toString() //18  часов
             day2[13] = n2Day2?.get(13)?.text().toString() //21  часов
-
-
-
         }
-
+        //вылюта
 
     }
+
+
+
+    //----------------------------------FUN----------------------------------------------
+
+
+
+
+
 
     fun nameCityFun(): String {
         if (nameCity == null) {

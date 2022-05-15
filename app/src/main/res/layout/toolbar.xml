@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/toolbar"
+<androidx.appcompat.widget.Toolbar android:background="@drawable/toolbarbg"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="50dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:text="Погода"
-        android:textSize="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:background="@drawable/pogoda"
+        android:layout_width="45dp"
+        android:layout_height="45dp"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/BtnCity"
+        android:background="@drawable/setting"
+        style="@style/TextViewPrimary"
+        android:textColor="@color/white"
+        android:text="настройки"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="5dp"
+        android:textSize="17sp"
+        android:layout_marginStart="20dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"/>
 
     <androidx.appcompat.widget.AppCompatSpinner
         android:layout_gravity="end"
@@ -19,7 +35,7 @@
         android:layout_marginStart="5dp"
         android:background="@color/btnSpiner"
         android:popupBackground="@color/btnSpinerFon"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:entries="@array/StringArrayCity"
         android:layout_height="30dp"/>
 
