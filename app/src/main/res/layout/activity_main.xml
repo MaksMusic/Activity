@@ -75,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:paddingTop="10dp"
-        android:text="Обновите данные   "
+        android:text="Обновите данные  "
         android:textSize="25dp"/>
 
     <TextView
