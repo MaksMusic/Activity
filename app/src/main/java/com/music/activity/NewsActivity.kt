@@ -26,6 +26,28 @@ class NewsActivity() : AppCompatActivity() {
         thread1 = Thread(t3)
         thread1.start()
 
+        binding.exit.setOnClickListener() {
+            finish()
+        }
+
+
+
+
+        binding.btnRefresh.setOnClickListener(){
+            t3 = T3News(gorod)
+            thread1 = Thread(t3)
+            thread1.start()
+
+
+            Handler().postDelayed({
+                binding.textRubDollar.setText(t3.rubDollar())
+                binding.textRubEuro.setText(t3.rubEuro())
+                binding.textRubLir.setText(t3.rubLIR())
+                binding.textRubYuan.setText(t3.rubUAN())
+                binding.textRubBitcoin.text = t3.rubBtn()
+
+            }, 2000)
+        }
 //присвоения View элементам значения
 
         Handler().postDelayed({
@@ -33,6 +55,7 @@ class NewsActivity() : AppCompatActivity() {
             binding.textRubEuro.setText(t3.rubEuro())
             binding.textRubLir.setText(t3.rubLIR())
             binding.textRubYuan.setText(t3.rubUAN())
+            binding.textRubBitcoin.text = t3.rubBtn()
 
         }, 2000)
 

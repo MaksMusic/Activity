@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">прогноз погоды</string>
     <string name="nable1">Nable1</string>
+    <string name="null1"></string>
 
     <string-array name="StringArrayCity">
         <item>Ростов-на-Дону</item>

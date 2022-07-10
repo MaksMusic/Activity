@@ -18,10 +18,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:background="@drawable/pogoda"
-            android:layout_width="45dp"
-            android:layout_height="45dp"/>
+
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/BtnCity"
@@ -33,20 +30,23 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="5dp"
             android:textSize="17sp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:layout_width="40dp"
             android:layout_height="40dp"/>
 
         <androidx.appcompat.widget.AppCompatSpinner
+            android:textAlignment="center"
             android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
             android:id="@+id/spinnerCity"
             android:textColor="#FF0000"
             android:layout_marginStart="5dp"
-            android:background="@color/btnSpiner"
+            android:background="@drawable/btn_update_gorod"
             android:popupBackground="@color/btnSpinerFon"
             android:layout_width="180dp"
             android:entries="@array/StringArrayCity"
-            android:layout_height="30dp"/>
+            android:layout_height="30dp"
+            tools:ignore="RtlCompat" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -75,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:paddingTop="10dp"
-        android:text="Сейчас   "
+        android:text="Обновите данные   "
         android:textSize="25dp"/>
 
     <TextView
@@ -188,8 +188,7 @@
             <TextView
                 android:id="@+id/zavtrad2"
                 android:layout_height="match_parent"
-
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
 
@@ -215,8 +214,7 @@
             <TextView
                 android:id="@+id/Time2_day2d2"
                 android:layout_height="match_parent"
-
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
 
@@ -246,8 +244,7 @@
             <TextView
                 android:id="@+id/Time2_d2d2"
                 android:layout_height="match_parent"
-
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
 
@@ -277,8 +274,7 @@
             <TextView
                 android:id="@+id/Time3_d2d2"
                 android:layout_height="match_parent"
-
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
 
@@ -307,8 +303,7 @@
             <TextView
                 android:id="@+id/Time4_d2d2"
                 android:layout_height="match_parent"
-
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
 
@@ -339,8 +334,7 @@
             <TextView
                 android:id="@+id/Time5_d2d2"
                 android:layout_height="match_parent"
-
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
         </TableRow>
@@ -369,8 +363,7 @@
             <TextView
                 android:id="@+id/Time6_d2d2"
                 android:layout_height="match_parent"
-
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
         </TableRow>
@@ -385,7 +378,6 @@
             <TextView
                 android:id="@+id/Time7d2"
                 android:layout_height="match_parent"
-
                 android:paddingTop="1dp"
                 android:text="21:00"
                 android:textColor="@color/textColor"
@@ -401,8 +393,7 @@
             <TextView
                 android:id="@+id/Time7_d2d2"
                 android:layout_height="match_parent"
-
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
         </TableRow>
@@ -452,7 +443,7 @@
             <TextView
                 android:id="@+id/zavtra"
                 android:layout_height="match_parent"
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
 
@@ -478,7 +469,7 @@
             <TextView
                 android:id="@+id/Time2_day2"
                 android:layout_height="match_parent"
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp" />
 
@@ -509,7 +500,7 @@
             <TextView
                 android:id="@+id/Time2_d2"
                 android:layout_height="match_parent"
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp" />
 
@@ -539,7 +530,7 @@
             <TextView
                 android:id="@+id/Time3_d2"
                 android:layout_height="match_parent"
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp" />
 
@@ -568,7 +559,7 @@
             <TextView
                 android:id="@+id/Time4_d2"
                 android:layout_height="match_parent"
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
 
@@ -599,7 +590,7 @@
             <TextView
                 android:id="@+id/Time5_d2"
                 android:layout_height="match_parent"
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
         </TableRow>
@@ -628,7 +619,7 @@
             <TextView
                 android:id="@+id/Time6_d2"
                 android:layout_height="match_parent"
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
         </TableRow>
@@ -660,7 +651,7 @@
             <TextView
                 android:id="@+id/Time7_d2"
                 android:layout_height="match_parent"
-                android:text="ясно"
+                android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
         </TableRow>
@@ -673,7 +664,7 @@
         android:layout_marginBottom="5dp"
         android:backgroundTint="@color/blue"
         android:foreground="@drawable/n"
-        android:background="@color/btnNew"
+        android:background="@drawable/btn_update_team"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

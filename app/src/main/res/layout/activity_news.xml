@@ -7,6 +7,44 @@
     android:layout_height="match_parent"
     tools:context=".NewsActivity">
 
+
+    <androidx.appcompat.widget.Toolbar android:background="@drawable/toolbarbg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/exit"
+            style="@style/TextViewPrimary"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/exit"
+            android:text="настройки"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:text="Курс валют "
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:layout_marginStart="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+
+
+
+    </androidx.appcompat.widget.Toolbar>
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/LLValyta"
         android:layout_width="match_parent"
@@ -18,9 +56,10 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:textColor="@color/white"
             android:id="@+id/textRubDollar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,6 +70,7 @@
             android:textSize="26dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:textColor="@color/white"
             android:id="@+id/textRubEuro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,6 +81,7 @@
             android:textSize="26dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:textColor="@color/white"
             android:id="@+id/textRubLir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -52,6 +93,7 @@
             android:textSize="26dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:textColor="@color/white"
             android:id="@+id/textRubYuan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,6 +105,7 @@
             android:textSize="26dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:textColor="@color/white"
             android:id="@+id/textRubBitcoin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,6 +117,7 @@
             android:textSize="26dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:textColor="@color/white"
             android:id="@+id/textRubBitcoin2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,6 +132,18 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_refresh"
+        app:layout_constraintTop_toBottomOf="@+id/LLValyta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="обновить"
+        android:background="@drawable/btn_style"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
     <androidx.appcompat.widget.LinearLayoutCompat

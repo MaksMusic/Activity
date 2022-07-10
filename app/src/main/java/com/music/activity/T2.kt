@@ -128,7 +128,6 @@ class T2(var City: String) : Runnable {
             }
 
             if (l==false){
-
                 doc = Jsoup.connect(docCityHttp.get("Ростов-на-Дону")?.get(0)).data(
                     docCityHttp.get("Ростов-на-Дону")?.get(2),
                     docCityHttp.get("Ростов-на-Дону")?.get(3)
@@ -282,6 +281,9 @@ class T2(var City: String) : Runnable {
                 return ("day")
             }
         } else {
+            if(day[14][0].toString().toInt() > 6 ){
+                return ("day")
+            }else
             return ("noch")
         }
     }
