@@ -21,7 +21,6 @@ import androidx.core.content.ContextCompat.getSystemService
 import java.util.*
 
 
-
 val day = Array<String>(40) { "" };
 val day2 = Array<String>(40) { "" };
 
@@ -41,65 +40,77 @@ class T2(var City: String) : Runnable {
     private var time: Int = 0;
 
 
-
     @RequiresApi(Build.VERSION_CODES.N)
     override fun run() {
         Log.e("CITY:", City.toString())
 
-        var docCityHttp = mutableMapOf<String,List<String>>()
+        var docCityHttp = mutableMapOf<String, List<String>>()
 
 
 
-        docCityHttp.put("Ростов-на-Дону", listOf(
-            "https://www.gismeteo.ru/weather-rostov-na-donu-5110/",
-            "https://www.gismeteo.ru/weather-rostov-na-donu-5110/now",
-            "class",
-            "input js-input",
-            "https://www.gismeteo.ru/weather-rostov-na-donu-5110/tomorrow/",))
+        docCityHttp.put(
+            "Ростов-на-Дону", listOf(
+                "https://www.gismeteo.ru/weather-rostov-na-donu-5110/",
+                "https://www.gismeteo.ru/weather-rostov-na-donu-5110/now",
+                "class",
+                "input js-input",
+                "https://www.gismeteo.ru/weather-rostov-na-donu-5110/tomorrow/",
+            )
+        )
 
-        docCityHttp.put("Санкт-Петербург", listOf(
-            "https://www.gismeteo.ru/weather-sankt-peterburg-4079/",
-            "https://www.gismeteo.ru/weather-sankt-peterburg-4079/now/",
-            "class",
-            "input js-input",
-            "https://www.gismeteo.ru/weather-sankt-peterburg-4079/tomorrow/",))
-
-
-        docCityHttp.put("Дербент", listOf(
-            "https://www.gismeteo.ru/weather-derbent-5268/",
-            "https://www.gismeteo.ru/weather-derbent-5268/now/",
-            "class",
-            "input js-input",
-            "https://www.gismeteo.ru/weather-derbent-5268/tomorrow/"))
-
-        docCityHttp.put("Белиджи", listOf(
-            "https://www.gismeteo.ru/weather-belidzhi-12497/",
-            "https://www.gismeteo.ru/weather-belidzhi-12497/now/",
-            "class",
-            "input js-input",
-            "https://www.gismeteo.ru/weather-belidzhi-12497/tomorrow/"))
+        docCityHttp.put(
+            "Санкт-Петербург", listOf(
+                "https://www.gismeteo.ru/weather-sankt-peterburg-4079/",
+                "https://www.gismeteo.ru/weather-sankt-peterburg-4079/now/",
+                "class",
+                "input js-input",
+                "https://www.gismeteo.ru/weather-sankt-peterburg-4079/tomorrow/",
+            )
+        )
 
 
-        docCityHttp.put("Псков", listOf(
-            "https://www.gismeteo.ru/weather-pskov-4114/",
-            "https://www.gismeteo.ru/weather-pskov-4114/now/",
-            "class",
-            "input js-input",
-            "https://www.gismeteo.ru/weather-pskov-4114/tomorrow/"))
+        docCityHttp.put(
+            "Дербент", listOf(
+                "https://www.gismeteo.ru/weather-derbent-5268/",
+                "https://www.gismeteo.ru/weather-derbent-5268/now/",
+                "class",
+                "input js-input",
+                "https://www.gismeteo.ru/weather-derbent-5268/tomorrow/"
+            )
+        )
+
+        docCityHttp.put(
+            "Белиджи", listOf(
+                "https://www.gismeteo.ru/weather-belidzhi-12497/",
+                "https://www.gismeteo.ru/weather-belidzhi-12497/now/",
+                "class",
+                "input js-input",
+                "https://www.gismeteo.ru/weather-belidzhi-12497/tomorrow/"
+            )
+        )
 
 
-        var l:Boolean = false;
+        docCityHttp.put(
+            "Псков", listOf(
+                "https://www.gismeteo.ru/weather-pskov-4114/",
+                "https://www.gismeteo.ru/weather-pskov-4114/now/",
+                "class",
+                "input js-input",
+                "https://www.gismeteo.ru/weather-pskov-4114/tomorrow/"
+            )
+        )
+
+
+        var l: Boolean = false;
 
         try {
 
-            for((key, value) in docCityHttp){
+            for ((key, value) in docCityHttp) {
                 if (key.equals(City.trim())) {
                     Log.e("CITYT:", key.toString())
 
-                    l=true;
+                    l = true;
                     // день 1 градусы
-
-
 
 
                     doc = Jsoup.connect(docCityHttp.get(key)?.get(0))
@@ -121,20 +132,23 @@ class T2(var City: String) : Runnable {
                     break
 
                 } else {
-                    Log.e("CITYT:", key.toString()+"elseeeeeeeeeeeeeee")
-                    l=false
+                    Log.e("CITYT:", key.toString() + "elseeeeeeeeeeeeeee")
+                    l = false
                 }
 
             }
 
-            if (l==false){
+            if (l == false) {
                 doc = Jsoup.connect(docCityHttp.get("Ростов-на-Дону")?.get(0)).data(
                     docCityHttp.get("Ростов-на-Дону")?.get(2),
                     docCityHttp.get("Ростов-на-Дону")?.get(3)
                 ).get()
 
                 doc2 = Jsoup.connect(docCityHttp.get("Ростов-на-Дону")?.get(1))
-                    .data(docCityHttp.get("Ростов-на-Дону")?.get(2), docCityHttp.get("Ростов-на-Дону")?.get(3))
+                    .data(
+                        docCityHttp.get("Ростов-на-Дону")?.get(2),
+                        docCityHttp.get("Ростов-на-Дону")?.get(3)
+                    )
                     .get()
 
                 docTime = Jsoup.connect(docCityHttp.get("Ростов-на-Дону")?.get(1))
@@ -148,15 +162,19 @@ class T2(var City: String) : Runnable {
             }
 
 
-
-
-        }catch (e: Exception) {
+        } catch (e: Exception) {
         }
 
         try {
 
-            n2 = doc!!.getElementsByAttributeValue("class", "unit unit_temperature_c") // список грудусов сегодня
-            n2Day2 = docDay2!!.getElementsByAttributeValue("class", "unit unit_temperature_c") // список грудусов сегодня
+            n2 = doc!!.getElementsByAttributeValue(
+                "class",
+                "unit unit_temperature_c"
+            ) // список грудусов сегодня
+            n2Day2 = docDay2!!.getElementsByAttributeValue(
+                "class",
+                "unit unit_temperature_c"
+            ) // список грудусов сегодня
             n3 = doc2!!.getElementsByAttributeValue("class", "now-desc").get(0) // текс погоды
             n4 = doc2!!.getElementsByAttributeValue("class", "unit unit_wind_m_s").get(0) //ветер
             n5 = doc2!!.getElementsByAttributeValue("class", "day").get(0) //время
@@ -201,12 +219,7 @@ class T2(var City: String) : Runnable {
     }
 
 
-
     //----------------------------------FUN----------------------------------------------
-
-
-
-
 
 
     fun nameCityFun(): String {
@@ -259,8 +272,7 @@ class T2(var City: String) : Runnable {
     fun n13fun(): String = day[13]
 
 
-
-    fun DayDay2(): String =  day2[2] // сегодня днем
+    fun DayDay2(): String = day2[2] // сегодня днем
     fun NochDay2(): String = day2[1] // сегодня ночью
 
     fun n8funDay2(): String = day2[8] //6 утра
@@ -271,7 +283,7 @@ class T2(var City: String) : Runnable {
     fun n13funDay2(): String = day2[13] //21  часов
 
     fun n14funTime(): String {
-        if (day[14] == ""|| day==null) {
+        if (day[14] == "" || day == null) {
             return "";
         }
         if (day[14][1].toString() != ":") {
@@ -281,10 +293,10 @@ class T2(var City: String) : Runnable {
                 return ("day")
             }
         } else {
-            if(day[14][0].toString().toInt() > 6 ){
+            if (day[14][0].toString().toInt() > 6) {
                 return ("day")
-            }else
-            return ("noch")
+            } else
+                return ("noch")
         }
     }
 
