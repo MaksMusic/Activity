@@ -41,7 +41,7 @@
             android:id="@+id/spinnerCity"
             android:textColor="#FF0000"
             android:layout_marginStart="5dp"
-            android:background="@drawable/btn_update_gorod"
+            android:background="@drawable/bluegradientspinner"
             android:popupBackground="@color/btnSpinerFon"
             android:layout_width="180dp"
             android:entries="@array/StringArrayCity"

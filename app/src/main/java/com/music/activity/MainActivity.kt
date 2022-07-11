@@ -3,6 +3,7 @@ package com.music.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,8 +11,12 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import androidx.core.view.forEach
 import com.music.activity.databinding.ActivityMainBinding
 import com.music.activity.databinding.ToolbarBinding
+import com.music.activity.utilSharePreferenes.Constants
+import com.music.activity.utilSharePreferenes.PreferencesManager
+import kotlin.concurrent.fixedRateTimer
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var thread1: Thread
     lateinit var Gorod: String
     private lateinit var view: View
+    var city:String? = null
+    lateinit var preferencesManager: PreferencesManager
 
 
     @SuppressLint("ResourceType")
@@ -28,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
+        preferencesManager = PreferencesManager(this)
         setContentView(binding.root)
         getSupportActionBar()?.hide()
         getWindow().setFlags(
@@ -36,8 +43,16 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
         binding.table2.visibility = View.GONE
+         city = preferencesManager.getStringCity(Constants.KEY_SITIES)!!
+
+        if (city!=null){
+            spinerEdit()
+        }
+
         update()
         updateBtn()
+
+
 
 
 
@@ -82,11 +97,14 @@ class MainActivity : AppCompatActivity() {
             update()
         }
     }
+
+
         fun update() {
             //передача выбранного города из спинера
-            var t2: T2 = T2(binding.spinnerCity.getSelectedItem().toString())
-            Log.e("ll", binding.spinnerCity.getSelectedItem().toString())
+            addCitySpiner()
+            var t2: T2 = T2(city!!)
 
+            Log.e("ll", binding.spinnerCity.getSelectedItem().toString())
             thread1 = Thread(t2)
             thread1.start()
 
@@ -155,6 +173,24 @@ class MainActivity : AppCompatActivity() {
                 binding.veter.text = t2.n6funVeter()
             }, 3000)
         }
+
+
+    override fun onResume() {
+        super.onResume()
+
+    }
+    fun spinerEdit(){
+        for (i in 0..binding.spinnerCity.count-1){
+            if (city==binding.spinnerCity.getItemAtPosition(i).toString()){
+                binding.spinnerCity.setSelection(i)
+            }
+        }
+    }
+
+    fun addCitySpiner(){
+        preferencesManager.putStringCity(Constants.KEY_SITIES,binding.spinnerCity.getSelectedItem().toString())
+        city = preferencesManager.getStringCity(Constants.KEY_SITIES)!!
+    }
 
 
     }
