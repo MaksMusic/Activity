@@ -17,7 +17,8 @@ import org.jsoup.select.Elements
 class SunriseActivity : AppCompatActivity() {
     var infoJsoup: Document? = null;
     var city:String = "non"
-     var n2: Elements? = null
+     var sunriseJsoup: Elements? = null
+     var dataJsoup: Elements? = null
     lateinit var preferencesManager: PreferencesManager
     lateinit var binding: ActivitySunriseBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,18 +50,23 @@ fun jsoupCitySetting(){
 
     fun updateInfo(){
         lifecycleScope.launch(Dispatchers.IO){
-            if (city!="non" && n2!=null) {
+            if (city!="non") {
                 infoJsoup = Jsoup.connect("https://www.gismeteo.ru/weather-$city/now/")
                     .data("class", "time").get()
-                n2 = infoJsoup?.getElementsByAttributeValue("class", "time")
+                if (infoJsoup != null) {
+                    sunriseJsoup = infoJsoup?.getElementsByAttributeValue("class", "time")
+                    dataJsoup = infoJsoup?.getElementsByAttributeValue("class", "now-localdate")!!
+                }
             }
+
             withContext(Dispatchers.Main){
-                if (n2 != null){
+                if (sunriseJsoup != null){
                     if (preferencesManager.getStringCity(Constants.KEY_SITIES)!=null){
                         binding.textCity.setText(preferencesManager.getStringCity(Constants.KEY_SITIES).toString())
                     }
-                    binding.textSunriseTime.setText( n2!![1].text().toString())
-                    binding.textSunsetTime.setText( n2!![0].text().toString())
+                    binding.textData.setText(dataJsoup!!.text().toString())
+                    binding.textSunriseTime.setText( sunriseJsoup!![1].text().toString())
+                    binding.textSunsetTime.setText( sunriseJsoup!![0].text().toString())
                 }
 
             }

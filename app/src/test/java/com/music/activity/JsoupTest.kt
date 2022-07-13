@@ -40,7 +40,8 @@ class JsoupTest {
 
           var n =  Jsoup.connect("https://www.gismeteo.ru/weather-rostov-na-donu-5110/now/").data("class","time").get()
         var n2:Elements? = n.getElementsByAttributeValue("class", "time")!!
-        println(n2!![1])
+        var n3:Elements? = n.getElementsByAttributeValue("class", "now-localdate")!!
+        println(n3?.text())
         }
 
 
