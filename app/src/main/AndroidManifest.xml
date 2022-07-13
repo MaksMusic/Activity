@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Activity">
         <activity
+            android:name=".SunriseActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewsActivity"
             android:exported="false" />
         <activity

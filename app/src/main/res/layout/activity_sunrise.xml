@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/vosxod"
+    android:layout_height="match_parent"
+    tools:context=".SunriseActivity">
+
+    <androidx.appcompat.widget.Toolbar android:background="@drawable/toolbarbg"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/exit"
+            android:background="@drawable/exit"
+            style="@style/TextViewPrimary"
+            android:textColor="@color/white"
+            android:text="настройки"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp"
+            android:textSize="17sp"
+            android:layout_marginStart="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"/>
+
+</androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textCity"
+        android:text=""
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="150dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+<LinearLayout
+    android:background="@drawable/team_zakat"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    android:id="@+id/LL1"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+
+    <LinearLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="horizontal"
+        android:id="@+id/LLSinrise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:text="Восход солнца   "
+            android:textSize="30sp"
+            android:layout_marginEnd="15dp"
+            android:textColor="@color/text"
+            android:id="@+id/textSunrise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:text=""
+            android:textSize="30sp"
+            android:textColor="@color/text"
+            android:id="@+id/textSunriseTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/LLSinset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="Заход солнца   "
+            android:textSize="30sp"
+            android:textColor="@color/text"
+            android:id="@+id/textSunset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="5dp"
+            android:text=""
+            android:textSize="30sp"
+            android:textColor="@color/text"
+            android:id="@+id/textSunsetTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var thread1: Thread
     lateinit var Gorod: String
     private lateinit var view: View
-    var city:String? = null
+    var city: String? = null
     lateinit var preferencesManager: PreferencesManager
 
 
@@ -43,9 +43,9 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
         binding.table2.visibility = View.GONE
-         city = preferencesManager.getStringCity(Constants.KEY_SITIES)!!
+        city = preferencesManager.getStringCity(Constants.KEY_SITIES)!!
 
-        if (city!=null){
+        if (city != null) {
             spinerEdit()
         }
 
@@ -61,9 +61,14 @@ class MainActivity : AppCompatActivity() {
         binding.newBtn.setOnClickListener {
             Gorod = binding.spinnerCity.getSelectedItem().toString()
             var intent = Intent(this, NewsActivity::class.java)
-            intent.putExtra("GOROD", Gorod)
+            intent.putExtra("GOROD", city)
             startActivity(intent)
 
+
+        }
+
+        binding.btnVosxod.setOnClickListener() {
+            startActivity(Intent(this, SunriseActivity::class.java).putExtra("GOROD", city))
 
         }
 
@@ -99,32 +104,32 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-        fun update() {
-            //передача выбранного города из спинера
-            addCitySpiner()
-            var t2: T2 = T2(city!!)
+    fun update() {
+        //передача выбранного города из спинера
+        addCitySpiner()
+        var t2: T2 = T2(city!!)
 
-            Log.e("ll", binding.spinnerCity.getSelectedItem().toString())
-            thread1 = Thread(t2)
-            thread1.start()
+        Log.e("ll", binding.spinnerCity.getSelectedItem().toString())
+        thread1 = Thread(t2)
+        thread1.start()
 
-            Handler().postDelayed({
-                //nameCity
-                binding.rndTitle.text = t2.nameCityFun()
-                //nameCity
-                Gorod = binding.spinnerCity.getSelectedItem().toString();
-                //bacgraund------------------
-                if (t2.n14funTime().equals("day")) {
+        Handler().postDelayed({
+            //nameCity
+            binding.rndTitle.text = t2.nameCityFun()
+            //nameCity
+            Gorod = binding.spinnerCity.getSelectedItem().toString();
+            //bacgraund------------------
+            if (t2.n14funTime().equals("day")) {
 //                    if (Gorod.equals("Ростов-на-Дону")){
 //                        binding.table1.setBackgroundColor(resources.getColor(R.color.TL2))
 //                        binding.table2.setBackgroundColor(resources.getColor(R.color.TL2))
 //                        binding.CL.setBackgroundResource(R.drawable.rostov)
 //                    } else {
-                    binding.table1.setBackgroundColor(resources.getColor(R.color.TL2))
-                    binding.table2.setBackgroundColor(resources.getColor(R.color.TL2))
-                    binding.CL.setBackgroundResource(R.drawable.bgday1)
-                    //}
-                } else {
+                binding.table1.setBackgroundColor(resources.getColor(R.color.TL2))
+                binding.table2.setBackgroundColor(resources.getColor(R.color.TL2))
+                binding.CL.setBackgroundResource(R.drawable.bgday1)
+                //}
+            } else {
 //                    if (Gorod.equals("Ростов-на-Дону")){
 //                        binding.table1.setBackgroundColor(resources.getColor(R.color.TL20))
 //                        binding.table2.setBackgroundColor(resources.getColor(R.color.TL20))
@@ -137,63 +142,67 @@ class MainActivity : AppCompatActivity() {
 //
 //
 //                    } else {
-                    binding.CL.setBackgroundResource(R.drawable.noch)
+                binding.CL.setBackgroundResource(R.drawable.noch)
 
-                }
+            }
 
-                //bacgraund------------------/>
-
-
-                t2 = T2(binding.spinnerCity.getSelectedItem().toString())
-                // погода 1 дня
-                binding.Time2DayD1.setText(t2.n1fun())
-                binding.Time2NochD1.setText(t2.n2fun())
-
-                binding.Time2D1.setText(t2.n8fun())
-                binding.Time3D1.setText(t2.n9fun())
-                binding.Time4D1.setText(t2.n10fun())
-                binding.Time5D1.setText(t2.n11fun())
-                binding.Time6D1.setText(t2.n12fun())
-                binding.Time7D1.setText(t2.n13fun())
-                // погода 2 дня
-                binding.dayd2.setText(t2.DayDay2())
-                binding.nochd2.setText(t2.NochDay2())
-
-                binding.Time2D1d2.setText(t2.n8funDay2())
-                binding.Time3D1d2.setText(t2.n9funDay2())
-                binding.Time4D1d2.setText(t2.n10funDay2())
-                binding.Time5D1d2.setText(t2.n11funDay2())
-                binding.Time6D1d2.setText(t2.n12funDay2())
-                binding.Time7D1d2.setText(t2.n13funDay2())
+            //bacgraund------------------/>
 
 
-                // погода вверх инфо
-                binding.day0.text = "Сейчас ${t2.n0fun()} "
-                binding.pogoda.text = t2.n5fun()
-                binding.veter.text = t2.n6funVeter()
-            }, 3000)
-        }
+            t2 = T2(binding.spinnerCity.getSelectedItem().toString())
+            // погода 1 дня
+            binding.Time2DayD1.setText(t2.n1fun())
+            binding.Time2NochD1.setText(t2.n2fun())
+
+            binding.Time2D1.setText(t2.n8fun())
+            binding.Time3D1.setText(t2.n9fun())
+            binding.Time4D1.setText(t2.n10fun())
+            binding.Time5D1.setText(t2.n11fun())
+            binding.Time6D1.setText(t2.n12fun())
+            binding.Time7D1.setText(t2.n13fun())
+            // погода 2 дня
+            binding.dayd2.setText(t2.DayDay2())
+            binding.nochd2.setText(t2.NochDay2())
+
+            binding.Time2D1d2.setText(t2.n8funDay2())
+            binding.Time3D1d2.setText(t2.n9funDay2())
+            binding.Time4D1d2.setText(t2.n10funDay2())
+            binding.Time5D1d2.setText(t2.n11funDay2())
+            binding.Time6D1d2.setText(t2.n12funDay2())
+            binding.Time7D1d2.setText(t2.n13funDay2())
+
+
+            // погода вверх инфо
+            binding.day0.text = "Сейчас ${t2.n0fun()} "
+            binding.pogoda.text = t2.n5fun()
+            binding.veter.text = t2.n6funVeter()
+        }, 3000)
+    }
 
 
     override fun onResume() {
         super.onResume()
 
     }
-    fun spinerEdit(){
-        for (i in 0..binding.spinnerCity.count-1){
-            if (city==binding.spinnerCity.getItemAtPosition(i).toString()){
+
+    fun spinerEdit() {
+        for (i in 0..binding.spinnerCity.count - 1) {
+            if (city == binding.spinnerCity.getItemAtPosition(i).toString()) {
                 binding.spinnerCity.setSelection(i)
             }
         }
     }
 
-    fun addCitySpiner(){
-        preferencesManager.putStringCity(Constants.KEY_SITIES,binding.spinnerCity.getSelectedItem().toString())
+    fun addCitySpiner() {
+        preferencesManager.putStringCity(
+            Constants.KEY_SITIES,
+            binding.spinnerCity.getSelectedItem().toString()
+        )
         city = preferencesManager.getStringCity(Constants.KEY_SITIES)!!
     }
 
 
-    }
+}
 
 
 //    override fun onStart() {

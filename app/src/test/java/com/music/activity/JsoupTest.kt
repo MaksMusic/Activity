@@ -1,5 +1,8 @@
 package com.music.activity
 
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.select.Elements
@@ -31,6 +34,15 @@ class JsoupTest {
         println(bitcoinElement?.text().toString())
 
     }
+
+    @Test
+    fun updateInfo(){
+
+          var n =  Jsoup.connect("https://www.gismeteo.ru/weather-rostov-na-donu-5110/now/").data("class","time").get()
+        var n2:Elements? = n.getElementsByAttributeValue("class", "time")!!
+        println(n2!![1])
+        }
+
 
 
 

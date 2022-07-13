@@ -19,6 +19,8 @@
     <color name="textColor">#E6F3F3F6</color>
     <color name="TL">#19000000</color>
     <color name="TL2">#5E000000</color>
+    <color name="LL1Zakat">#36000000</color>
+    <color name="text">#F0F1DD9D</color>
 
     <color name="TL10">#83000000</color>
     <color name="TL20">#97000000</color>
