@@ -12,8 +12,11 @@ class T3News(var Gorod: String) : Runnable {
     var bitcoin : Document? = null
     var bitcoinElement:Elements? = null
 
-    val valuta = Array<String>(10) { "" };
+    var valuta = Array<String>(10) { "" };
     override fun run() {
+        try {
+
+
         //--------------------------получение данных --------------------------------------------
         news =
             Jsoup.connect("https://finance.rambler.ru/currencies")
@@ -45,6 +48,12 @@ class T3News(var Gorod: String) : Runnable {
         valuta[3] = "10 Юаней = " + newsRub?.get(8)?.text().toString() + " RUB"
         valuta[4] = "1 Биткоин = " + bitcoinElement?.get(0)?.text().toString() + " RUB"
         Log.e("News1", valuta[0] + "000000000000")
+
+    }catch (e:Exception){
+            for (s in valuta.indices) {
+                valuta.set(s,"нет соединения")
+            }
+    }
 
     }
 

@@ -16,61 +16,94 @@ import org.jsoup.select.Elements
 
 class SunriseActivity : AppCompatActivity() {
     var infoJsoup: Document? = null;
-    var city:String = "non"
-     var sunriseJsoup: Elements? = null
-     var dataJsoup: Elements? = null
+    var city: String = "non"
+    var sunriseJsoup: Elements? = null
+    var dataJsoup: Elements? = null
+    var INTERNET_ON = false
     lateinit var preferencesManager: PreferencesManager
     lateinit var binding: ActivitySunriseBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySunriseBinding.inflate(layoutInflater)
-
         preferencesManager = PreferencesManager(this)
         setContentView(binding.root)
+
         jsoupCitySetting()
         updateInfo()
         exit()
 
 
-}
+    }
 
-fun jsoupCitySetting(){
-    if (preferencesManager.getStringCity(Constants.KEY_SITIES)!=null){
-        when(preferencesManager.getStringCity(Constants.KEY_SITIES).toString()){
-            "Ростов-на-Дону" -> city = "rostov-na-donu-5110"
-            "Дербент" -> city = "derbent-5268"
-            "Санкт-Петербург" -> city = "sankt-peterburg-4079"
-            "Белиджи" -> city = "belidzhi-12497"
-            "Псков" -> city = "pskov-4114"
-
+    fun jsoupCitySetting() {
+        if (preferencesManager.getStringCity(Constants.KEY_SITIES) != null) {
+            when (preferencesManager.getStringCity(Constants.KEY_SITIES).toString()) {
+                "Ростов-на-Дону" -> city = "rostov-na-donu-5110"
+                "Дербент" -> city = "derbent-5268"
+                "Санкт-Петербург" -> city = "sankt-peterburg-4079"
+                "Белиджи" -> city = "belidzhi-12497"
+                "Псков" -> city = "pskov-4114"
+            }
         }
     }
-}
 
 
-    fun updateInfo(){
-        lifecycleScope.launch(Dispatchers.IO){
-            if (city!="non") {
-                infoJsoup = Jsoup.connect("https://www.gismeteo.ru/weather-$city/now/")
-                    .data("class", "time").get()
-                if (infoJsoup != null) {
-                    sunriseJsoup = infoJsoup?.getElementsByAttributeValue("class", "time")
-                    dataJsoup = infoJsoup?.getElementsByAttributeValue("class", "now-localdate")!!
-                }
-            }
+    fun updateInfo() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            if (city != "non") {
+                try {
 
-            withContext(Dispatchers.Main){
-                if (sunriseJsoup != null){
-                    if (preferencesManager.getStringCity(Constants.KEY_SITIES)!=null){
-                        binding.textCity.setText(preferencesManager.getStringCity(Constants.KEY_SITIES).toString())
+
+                    infoJsoup = Jsoup.connect("https://www.gismeteo.ru/weather-$city/now/")
+                        ?.data("class", "time")?.get()
+
+                    if (infoJsoup != null) {
+                        INTERNET_ON = true
+                        sunriseJsoup = infoJsoup?.getElementsByAttributeValue("class", "time")
+                        dataJsoup = infoJsoup?.getElementsByAttributeValue("class", "now-localdate")
+                    } else {
+                        INTERNET_ON = false
                     }
-                    binding.textData.setText(dataJsoup!!.text().toString())
-                    binding.textSunriseTime.setText( sunriseJsoup!![1].text().toString())
-                    binding.textSunsetTime.setText( sunriseJsoup!![0].text().toString())
-                }
 
+
+
+                    withContext(Dispatchers.Main) {
+                        if (INTERNET_ON == true) {
+                            if (sunriseJsoup != null && dataJsoup != null) {
+                                binding.textCity.setText(
+                                    preferencesManager.getStringCity(Constants.KEY_SITIES)
+                                        .toString()
+                                )
+                                binding.textData.setText(dataJsoup!!.text().toString())
+                                binding.textSunriseTime.setText(sunriseJsoup!![1].text().toString())
+                                binding.textSunsetTime.setText(sunriseJsoup!![0].text().toString())
+                            }
+
+                        } else {
+                            binding.textCity.setText(
+                                preferencesManager.getStringCity(Constants.KEY_SITIES).toString()
+                            )
+                            textEdit("нет соединения")
+                        }
+                    }
+                }catch (e:Exception){
+                    textEdit("выберите город в главном меню")
+                }
+            } else {
+                withContext(Dispatchers.Main) {
+                    textEdit("выберите город в главном меню")
+                }
             }
+
         }
+
+    }
+
+
+    fun textEdit(textDataEdit: String) {
+        binding.textData.setText(textDataEdit)
+        binding.textSunriseTime.setText("")
+        binding.textSunsetTime.setText("")
     }
 
     fun exit() {
