@@ -34,7 +34,7 @@
 
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/BtnCity"
+            android:id="@+id/btnCity"
             android:background="@drawable/setting"
             style="@style/TextViewPrimary"
             android:textColor="@color/white"
@@ -407,10 +407,11 @@
 
             <TextView
                 android:id="@+id/Time7_d2d2"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
                 android:text="@string/null1"
                 android:textColor="@color/textColor"
-                android:textSize="27dp"/>
+                android:textSize="27dp" />
         </TableRow>
     </TableLayout>
 

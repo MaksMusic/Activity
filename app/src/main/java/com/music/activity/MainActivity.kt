@@ -31,19 +31,23 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         preferencesManager = PreferencesManager(this)
         setContentView(binding.root)
         getSupportActionBar()?.hide()
+
+        binding.btnCity.setOnClickListener(){
+            var intent = Intent(this,CityActivity::class.java)
+            startActivity(intent)
+        }
+
         getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         );
         binding.table2.visibility = View.GONE
-        city = preferencesManager.getStringCity(Constants.KEY_SITIES)!!
+        city = preferencesManager?.getStringCity(Constants.KEY_SITIES)
 
         if (city != null) {
             spinerEdit()
@@ -73,10 +77,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        binding.BtnCity.setOnClickListener {
-            var intent = Intent(this, CityActivity::class.java)
-
-        }
 
         binding.day2Btn.setOnClickListener {
             binding.table1.visibility = View.GONE

@@ -11,6 +11,11 @@
         <item>Псков</item>
     </string-array>
 
+    <string-array name="settingStyle">
+        <item>светлая</item>
+        <item>темная</item>
+    </string-array>
+
 
 </resources>
 
