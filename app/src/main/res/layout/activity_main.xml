@@ -408,7 +408,7 @@
             <TextView
                 android:id="@+id/Time7_d2d2"
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="match_parent"
                 android:text="@string/null1"
                 android:textColor="@color/textColor"
                 android:textSize="27dp" />
@@ -421,6 +421,7 @@
 
 
     <TableLayout
+
         android:stretchColumns="0,2"
         android:id="@+id/table1"
         android:visibility="visible"
@@ -438,6 +439,7 @@
         android:paddingTop="20dp">
 
     <TableRow
+
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
