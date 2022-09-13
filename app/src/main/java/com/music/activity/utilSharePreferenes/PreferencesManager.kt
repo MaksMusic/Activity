@@ -18,6 +18,10 @@ class PreferencesManager(context: Context) {
             return sharedPreferences.getString(key,null)
         }
 
-
+    fun putStringColor(key:String?, value:String?) {
+        val editor = sharedPreferences.edit()
+        editor.putString(key, value)
+        editor.apply()
+    }
 
 }

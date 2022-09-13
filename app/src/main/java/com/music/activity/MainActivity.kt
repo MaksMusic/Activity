@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         preferencesManager = PreferencesManager(this)
         setContentView(binding.root)
         getSupportActionBar()?.hide()
+        interafceColor()
 
         binding.btnCity.setOnClickListener(){
             var intent = Intent(this,CityActivity::class.java)
@@ -125,9 +126,9 @@ class MainActivity : AppCompatActivity() {
 //                        binding.table2.setBackgroundColor(resources.getColor(R.color.TL2))
 //                        binding.CL.setBackgroundResource(R.drawable.rostov)
 //                    } else {
-                binding.table1.setBackgroundColor(resources.getColor(R.color.TL2))
-                binding.table2.setBackgroundColor(resources.getColor(R.color.TL2))
-                binding.CL.setBackgroundResource(R.drawable.bgday1)
+//                binding.table1.setBackgroundColor(resources.getColor(R.color.TL2))
+//                binding.table2.setBackgroundColor(resources.getColor(R.color.TL2))
+//                binding.CL.setBackgroundResource(R.drawable.bgday2)
                 //}
             } else {
 //                    if (Gorod.equals("Ростов-на-Дону")){
@@ -201,6 +202,14 @@ class MainActivity : AppCompatActivity() {
         city = preferencesManager.getStringCity(Constants.KEY_SITIES)!!
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun interafceColor(){
+        if (preferencesManager.getStringCity("color") == "while") {
+            binding.CL.setBackgroundDrawable(resources.getDrawable(R.drawable.fon7))
+        }else{
+            binding.CL.setBackgroundDrawable(resources.getDrawable(R.drawable.bgday2))
+        }
+    }
 
 }
 
