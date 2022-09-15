@@ -172,6 +172,7 @@ class MainActivity : AppCompatActivity() {
             binding.Time6D1d2.setText(t2.n12funDay2())
             binding.Time7D1d2.setText(t2.n13funDay2())
 
+            //weather day 1
             binding.weater1day.text = t2.n21funDay1().toString()
             binding.weater1noch.text = t2.n20funNoch1().toString()
 
@@ -181,7 +182,17 @@ class MainActivity : AppCompatActivity() {
             binding.weaterd1time15.text = t2.n21funDay1().toString()
             binding.weaterd1time18.text = t2.n25funDay18().toString()
             binding.weaterd1time21.text = t2.n26funDay21().toString()
+            //weather day 2
 
+            binding.weaterd2day.text = t2.n31funDay1().toString()
+            binding.weaterd2night.text = t2.n20funNoch1().toString()
+
+            binding.weaterd2time6.text = t2.n32funDay6().toString()
+            binding.weaterd2time9.text = t2.n33funDay9().toString()
+            binding.weaterd2time12.text = t2.n34funDay12().toString()
+            binding.weaterd2time15.text = t2.n31funDay1().toString()
+            binding.weaterd2time18.text = t2.n35funDay18().toString()
+            binding.weaterd2time21.text = t2.n36funDay21().toString()
 
             // погода вверх инфо
             binding.day0.text = "Сейчас ${t2.n0fun()} "

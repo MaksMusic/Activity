@@ -27,9 +27,10 @@ val day2 = Array<String>(40) { "" };
 
 class T2(var City: String) : Runnable {
 
-
-    lateinit var weter: ArrayList<String?>
-    var html: Document? = null // страница
+    lateinit var weatherDay1:ArrayList<String>
+    lateinit var weatherDay2:ArrayList<String>
+    var htmlDay1: Document? = null // страница дня 1
+    var htmlDay2: Document? = null // страница дня 1
     var doc: Document? = null
     var docDay2: Document? = null;
     var doc2: Document? = null;
@@ -44,7 +45,8 @@ class T2(var City: String) : Runnable {
 
 
     init {
-        weter = ArrayList<String?>(10)
+        weatherDay1 = ArrayList<String>()
+        weatherDay2 = ArrayList<String>()
 
     }
 
@@ -131,7 +133,8 @@ class T2(var City: String) : Runnable {
                         .data(docCityHttp.get(key)?.get(2), docCityHttp.get(key)?.get(3))
                         .get()
 
-                    html = Jsoup.connect(docCityHttp.get(key)?.get(0)).get()
+                    htmlDay1 = Jsoup.connect(docCityHttp.get(key)?.get(0)).get()
+                    htmlDay2 = Jsoup.connect(docCityHttp.get(key)?.get(4)).get()
                     //weter  = html.select("div[class=weather-icon tooltip]")[0].attr("data-text")
 
 
@@ -194,32 +197,61 @@ class T2(var City: String) : Runnable {
             n5 = doc2!!.getElementsByAttributeValue("class", "day").get(0) //время
             nameCity = doc!!.getElementsByAttributeValue("class", "page-title")
 
-            weter.add(
-                html!!.select("div[class=weather-icon tooltip]")[0].attr("data-text").toString()
-                    .substringAfter(',').trim()) //
-            weter.add(
-                html!!.select("div[class=weather-icon tooltip]")[5].attr("data-text").toString()
+            weatherDay1.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[0].attr("data-text").toString()
+                    .substringBefore(',').trim()) //
+            weatherDay1.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[5].attr("data-text").toString()
+                    .substringAfterLast(',').trim()) //
+
+            weatherDay1.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[2].attr("data-text").toString()
+                    .substringBefore(',').trim()) //
+
+            weatherDay1.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[3].attr("data-text").toString()
+                    .substringBefore(',').trim()) //
+
+            weatherDay1.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[4].attr("data-text").toString()
+                    .substringBefore(',').trim()) //
+
+            weatherDay1.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[6].attr("data-text").toString()
+                    .substringBefore(',').trim()) //
+
+
+            weatherDay1.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[7].attr("data-text").toString()
                     .substringAfter(',').trim()) //
 
-            weter.add(
-                html!!.select("div[class=weather-icon tooltip]")[2].attr("data-text").toString()
+            // day2
+            weatherDay2.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[0].attr("data-text").toString()
+                    .substringAfter(',').trim()) //
+            weatherDay2.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[5].attr("data-text").toString()
                     .substringAfter(',').trim()) //
 
-            weter.add(
-                html!!.select("div[class=weather-icon tooltip]")[3].attr("data-text").toString()
+            weatherDay2.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[2].attr("data-text").toString()
                     .substringAfter(',').trim()) //
 
-            weter.add(
-                html!!.select("div[class=weather-icon tooltip]")[4].attr("data-text").toString()
+            weatherDay2.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[3].attr("data-text").toString()
                     .substringAfter(',').trim()) //
 
-            weter.add(
-                html!!.select("div[class=weather-icon tooltip]")[6].attr("data-text").toString()
+            weatherDay2.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[4].attr("data-text").toString()
+                    .substringAfter(',').trim()) //
+
+            weatherDay2.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[6].attr("data-text").toString()
                     .substringAfter(',').trim()) //
 
 
-            weter.add(
-                html!!.select("div[class=weather-icon tooltip]")[7].attr("data-text").toString()
+            weatherDay2.add(
+                htmlDay1!!.select("div[class=weather-icon tooltip]")[7].attr("data-text").toString()
                     .substringAfter(',').trim()) //
 
 
@@ -230,7 +262,7 @@ class T2(var City: String) : Runnable {
 
 
 
-        if (n2 != null || n3 != null || n4 != null || n5 != null || weter.isEmpty()) {
+        if (n2 != null || n3 != null || n4 != null || n5 != null || weatherDay1.isEmpty()) {
 
             day[0] = n2?.get(0)?.text().toString() // сейчас
             day[1] = n2?.get(3)?.text().toString() // сегодня днем
@@ -240,14 +272,26 @@ class T2(var City: String) : Runnable {
             day[5] = n3?.text().toString()  // текс погоды
             day[6] = n4?.text().toString() // ветер
 
+//weather text day1
+            day[20] = weatherDay1.get(0).toString() // ночь
+            day[21] = weatherDay1.get(1).toString() // день
+            day[22] = weatherDay1.get(2).toString() // 6
+            day[23] = weatherDay1.get(3).toString()// 12
+            day[24] = weatherDay1.get(1).toString()// 15
+            day[25] = weatherDay1.get(4).toString()// 18
+            day[26] = weatherDay1.get(5).toString()// 21
 
-            day[20] = weter.get(0).toString() // ночь
-            day[21] = weter.get(1).toString() // день
-            day[22] = weter.get(2).toString() // 6
-            day[23] = weter.get(3).toString()// 12
-            day[24] = weter.get(1).toString()// 15
-            day[25] = weter.get(4).toString()// 18
-            day[26] = weter.get(5).toString()// 21
+
+//weather text day2
+            day[30] = weatherDay2.get(0).toString() // ночь
+            day[31] = weatherDay2.get(1).toString() // день
+            day[32] = weatherDay2.get(2).toString() // 6
+            day[33] = weatherDay2.get(3).toString()// 12
+            day[34] = weatherDay2.get(1).toString()// 15
+            day[35] = weatherDay2.get(4).toString()// 18
+            day[36] = weatherDay2.get(5).toString()// 21
+
+
 
             day[8] = n2?.get(8)?.text().toString() //6 утра
             day[9] = n2?.get(9)?.text().toString() //9 утра
@@ -313,6 +357,7 @@ class T2(var City: String) : Runnable {
         }
     }
 
+    //weather day1
     fun n20funNoch1(): String = if (!day.isEmpty())  day.get(20).toString()!! else "" // текст ночь
     fun n21funDay1(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день 15
 
@@ -322,7 +367,15 @@ class T2(var City: String) : Runnable {
     fun n25funDay18(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
     fun n26funDay21(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
 
+    //weather day2
+    fun n30funNoch1(): String = if (!day.isEmpty())  day.get(20).toString()!! else "" // текст ночь
+    fun n31funDay1(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день 15
 
+    fun n32funDay6(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+    fun n33funDay9(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+    fun n34funDay12(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+    fun n35funDay18(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+    fun n36funDay21(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
 
     fun n0fun(): String = day[0]
     fun n5fun(): String = day[5]

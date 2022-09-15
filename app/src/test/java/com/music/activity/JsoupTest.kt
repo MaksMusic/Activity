@@ -60,6 +60,7 @@ class JsoupTest {
         var textWeter = n100?.toString()?.substringAfter(',')?.trim()
 
         println("n100 " + n100?.toString())
+        println("n100 substringAfter " + n100?.substringAfter(',')?.trim())
         println("n101 " + n101?.toString())
         //0 ночь
         //2 6 утра
