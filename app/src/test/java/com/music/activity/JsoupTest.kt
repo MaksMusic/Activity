@@ -51,7 +51,7 @@ class JsoupTest {
     fun testWeater(){
         var url = "https://www.gismeteo.ru/weather-rostov-na-donu-5110/"
         var n =  Jsoup.connect(url).get()
-        var n100 = n.select("div[class=weather-icon tooltip]")[0].attr("data-text")
+        var n100 = n.select("div[class=weather-icon tooltip]")[2].attr("data-text")
          var nn = n.select("div[class=weather-icon tooltip]")[0].attr("data-text").toString()
              .substringAfter(',').trim() //
 

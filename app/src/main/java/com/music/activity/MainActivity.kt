@@ -185,7 +185,7 @@ class MainActivity : AppCompatActivity() {
             //weather day 2
 
             binding.weaterd2day.text = t2.n31funDay1().toString()
-            binding.weaterd2night.text = t2.n20funNoch1().toString()
+            binding.weaterd2night.text = t2.n30funNoch1().toString()
 
             binding.weaterd2time6.text = t2.n32funDay6().toString()
             binding.weaterd2time9.text = t2.n33funDay9().toString()

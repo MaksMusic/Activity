@@ -199,60 +199,60 @@ class T2(var City: String) : Runnable {
 
             weatherDay1.add(
                 htmlDay1!!.select("div[class=weather-icon tooltip]")[0].attr("data-text").toString()
-                    .substringBefore(',').trim()) //
+                    .substringAfterLast(',').trim()) //
             weatherDay1.add(
                 htmlDay1!!.select("div[class=weather-icon tooltip]")[5].attr("data-text").toString()
                     .substringAfterLast(',').trim()) //
 
             weatherDay1.add(
                 htmlDay1!!.select("div[class=weather-icon tooltip]")[2].attr("data-text").toString()
-                    .substringBefore(',').trim()) //
+                    .substringAfterLast(',').trim()) //
 
             weatherDay1.add(
                 htmlDay1!!.select("div[class=weather-icon tooltip]")[3].attr("data-text").toString()
-                    .substringBefore(',').trim()) //
+                    .substringAfterLast(',').trim()) //
 
             weatherDay1.add(
                 htmlDay1!!.select("div[class=weather-icon tooltip]")[4].attr("data-text").toString()
-                    .substringBefore(',').trim()) //
+                    .substringAfterLast(',').trim()) //
 
             weatherDay1.add(
                 htmlDay1!!.select("div[class=weather-icon tooltip]")[6].attr("data-text").toString()
-                    .substringBefore(',').trim()) //
+                    .substringAfterLast(',').trim()) //
 
 
             weatherDay1.add(
                 htmlDay1!!.select("div[class=weather-icon tooltip]")[7].attr("data-text").toString()
-                    .substringAfter(',').trim()) //
+                    .substringAfterLast(',').trim()) //
 
             // day2
             weatherDay2.add(
-                htmlDay1!!.select("div[class=weather-icon tooltip]")[0].attr("data-text").toString()
-                    .substringAfter(',').trim()) //
+                htmlDay2!!.select("div[class=weather-icon tooltip]")[0].attr("data-text").toString()
+                    .substringAfterLast(',').trim()) //
             weatherDay2.add(
-                htmlDay1!!.select("div[class=weather-icon tooltip]")[5].attr("data-text").toString()
-                    .substringAfter(',').trim()) //
+                htmlDay2!!.select("div[class=weather-icon tooltip]")[5].attr("data-text").toString()
+                    .substringAfterLast(',').trim()) //
 
             weatherDay2.add(
-                htmlDay1!!.select("div[class=weather-icon tooltip]")[2].attr("data-text").toString()
-                    .substringAfter(',').trim()) //
+                htmlDay2!!.select("div[class=weather-icon tooltip]")[2].attr("data-text").toString()
+                    .substringAfterLast(',').trim()) //
 
             weatherDay2.add(
-                htmlDay1!!.select("div[class=weather-icon tooltip]")[3].attr("data-text").toString()
-                    .substringAfter(',').trim()) //
+                htmlDay2!!.select("div[class=weather-icon tooltip]")[3].attr("data-text").toString()
+                    .substringAfterLast(',').trim()) //
 
             weatherDay2.add(
-                htmlDay1!!.select("div[class=weather-icon tooltip]")[4].attr("data-text").toString()
-                    .substringAfter(',').trim()) //
+                htmlDay2!!.select("div[class=weather-icon tooltip]")[4].attr("data-text").toString()
+                    .substringAfterLast(',').trim()) //
 
             weatherDay2.add(
-                htmlDay1!!.select("div[class=weather-icon tooltip]")[6].attr("data-text").toString()
-                    .substringAfter(',').trim()) //
+                htmlDay2!!.select("div[class=weather-icon tooltip]")[6].attr("data-text").toString()
+                    .substringAfterLast(',').trim()) //
 
 
             weatherDay2.add(
-                htmlDay1!!.select("div[class=weather-icon tooltip]")[7].attr("data-text").toString()
-                    .substringAfter(',').trim()) //
+                htmlDay2!!.select("div[class=weather-icon tooltip]")[7].attr("data-text").toString()
+                    .substringAfterLast(',').trim()) //
 
 
         } catch (e: Exception) {
@@ -273,23 +273,23 @@ class T2(var City: String) : Runnable {
             day[6] = n4?.text().toString() // ветер
 
 //weather text day1
-            day[20] = weatherDay1.get(0).toString() // ночь
-            day[21] = weatherDay1.get(1).toString() // день
-            day[22] = weatherDay1.get(2).toString() // 6
-            day[23] = weatherDay1.get(3).toString()// 12
-            day[24] = weatherDay1.get(1).toString()// 15
-            day[25] = weatherDay1.get(4).toString()// 18
-            day[26] = weatherDay1.get(5).toString()// 21
+            day[20] = if(weatherDay1.get(0).length < 9 ) weatherDay1.get(0)  else weatherDay1.get(0).substringAfterLast(' ')// ночь
+            day[21] = if(weatherDay1.get(1).length < 9 ) weatherDay1.get(1)  else weatherDay1.get(1).substringAfterLast(' ') // день
+            day[22] = if(weatherDay1.get(2).length < 9 ) weatherDay1.get(2)  else weatherDay1.get(2).substringAfterLast(' ') // 6
+            day[23] = if(weatherDay1.get(3).length < 9 ) weatherDay1.get(3)  else weatherDay1.get(3).substringAfterLast(' ')// 12
+            day[24] = if(weatherDay1.get(4).length < 9 ) weatherDay1.get(4)  else weatherDay1.get(4).substringAfterLast( ' ')// 15
+            day[25] = if(weatherDay1.get(5).length < 9 ) weatherDay1.get(5)  else weatherDay1.get(5).substringAfterLast(' ')// 18
+            day[26] = if(weatherDay1.get(6).length < 9 ) weatherDay1.get(6)  else weatherDay1.get(6).substringAfterLast( ' ')// 21
 
 
 //weather text day2
-            day[30] = weatherDay2.get(0).toString() // ночь
-            day[31] = weatherDay2.get(1).toString() // день
-            day[32] = weatherDay2.get(2).toString() // 6
-            day[33] = weatherDay2.get(3).toString()// 12
-            day[34] = weatherDay2.get(1).toString()// 15
-            day[35] = weatherDay2.get(4).toString()// 18
-            day[36] = weatherDay2.get(5).toString()// 21
+            day[30] = if(weatherDay2.get(0).length < 9 ) weatherDay2.get(0)  else weatherDay2.get(0).substringAfterLast(" ") // ночь
+            day[31] = if(weatherDay2.get(1).length < 9 ) weatherDay2.get(1)  else weatherDay2.get(1).substringAfterLast(" ") // день
+            day[32] = if(weatherDay2.get(2).length < 9 ) weatherDay2.get(2)  else weatherDay2.get(2).substringAfterLast(" ") // 6
+            day[33] = if(weatherDay2.get(3).length < 9 ) weatherDay2.get(3)  else weatherDay2.get(3).substringAfterLast( " ")// 12
+            day[34] = if(weatherDay2.get(4).length < 9 ) weatherDay2.get(4)  else weatherDay2.get(4).substringAfterLast(" ")// 15
+            day[35] = if(weatherDay2.get(5).length < 9 ) weatherDay2.get(5)  else weatherDay2.get(5).substringAfterLast(" ")// 18
+            day[36] = if(weatherDay2.get(6).length < 9 ) weatherDay2.get(6)  else weatherDay2.get(6).substringAfterLast(" " )// 21
 
 
 
@@ -361,21 +361,21 @@ class T2(var City: String) : Runnable {
     fun n20funNoch1(): String = if (!day.isEmpty())  day.get(20).toString()!! else "" // текст ночь
     fun n21funDay1(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день 15
 
-    fun n22funDay6(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
-    fun n23funDay9(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
-    fun n24funDay12(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
-    fun n25funDay18(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
-    fun n26funDay21(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+    fun n22funDay6(): String = if (!day.isEmpty())  day.get(22).toString()!! else "" //текс день
+    fun n23funDay9(): String = if (!day.isEmpty())  day.get(23).toString()!! else "" //текс день
+    fun n24funDay12(): String = if (!day.isEmpty())  day.get(24).toString()!! else "" //текс день
+    fun n25funDay18(): String = if (!day.isEmpty())  day.get(25).toString()!! else "" //текс день
+    fun n26funDay21(): String = if (!day.isEmpty())  day.get(26).toString()!! else "" //текс день
 
     //weather day2
-    fun n30funNoch1(): String = if (!day.isEmpty())  day.get(20).toString()!! else "" // текст ночь
-    fun n31funDay1(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день 15
+    fun n30funNoch1(): String = if (!day.isEmpty())  day.get(30).toString()!! else "" // текст ночь
+    fun n31funDay1(): String = if (!day.isEmpty())  day.get(31).toString()!! else "" //текс день 15
 
-    fun n32funDay6(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
-    fun n33funDay9(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
-    fun n34funDay12(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
-    fun n35funDay18(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
-    fun n36funDay21(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+    fun n32funDay6(): String = if (!day.isEmpty())  day.get(32).toString()!! else "" //текс день
+    fun n33funDay9(): String = if (!day.isEmpty())  day.get(33).toString()!! else "" //текс день
+    fun n34funDay12(): String = if (!day.isEmpty())  day.get(34).toString()!! else "" //текс день
+    fun n35funDay18(): String = if (!day.isEmpty())  day.get(35).toString()!! else "" //текс день
+    fun n36funDay21(): String = if (!day.isEmpty())  day.get(36).toString()!! else "" //текс день
 
     fun n0fun(): String = day[0]
     fun n5fun(): String = day[5]
