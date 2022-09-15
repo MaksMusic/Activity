@@ -190,7 +190,7 @@
             <TextView
                 android:id="@+id/Time1d2"
                 android:layout_height="match_parent"
-                android:text="День"
+                android:text="день"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
 
@@ -216,7 +216,7 @@
             <TextView
                 android:id="@+id/TimeDayd2"
                 android:layout_height="match_parent"
-                android:text="Ночь"
+                android:text="ночь"
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
 
@@ -459,11 +459,11 @@
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
             <TextView
-                android:id="@+id/zavtra"
+                android:id="@+id/weater1day"
                 android:layout_height="match_parent"
                 android:text="@string/null1"
                 android:textColor="@color/textColor"
-                android:textSize="27dp"/>
+                android:textSize="20sp"/>
 
         </TableRow>
 
@@ -485,11 +485,11 @@
                 android:textColor="@color/textColor"
                 android:textSize="27dp" />
             <TextView
-                android:id="@+id/Time2_day2"
+                android:id="@+id/weater1noch"
                 android:layout_height="match_parent"
                 android:text="@string/null1"
                 android:textColor="@color/textColor"
-                android:textSize="27dp" />
+                android:textSize="20sp" />
 
         </TableRow>
 
@@ -516,11 +516,11 @@
                 android:textColor="@color/textColor"
                 android:textSize="27dp" />
             <TextView
-                android:id="@+id/Time2_d2"
+                android:id="@+id/weaterd1time6"
                 android:layout_height="match_parent"
                 android:text="@string/null1"
                 android:textColor="@color/textColor"
-                android:textSize="27dp" />
+                android:textSize="20sp" />
 
     </TableRow>
 
@@ -546,11 +546,11 @@
                 android:textSize="27dp" />
 
             <TextView
-                android:id="@+id/Time3_d2"
+                android:id="@+id/weaterd1time9"
                 android:layout_height="match_parent"
                 android:text="@string/null1"
                 android:textColor="@color/textColor"
-                android:textSize="27dp" />
+                android:textSize="20sp" />
 
         </TableRow>
 
@@ -575,11 +575,11 @@
                 android:textColor="@color/textColor"
                 android:textSize="27dp" />
             <TextView
-                android:id="@+id/Time4_d2"
+                android:id="@+id/weaterd1time12"
                 android:layout_height="match_parent"
                 android:text="@string/null1"
                 android:textColor="@color/textColor"
-                android:textSize="27dp"/>
+                android:textSize="20sp"/>
 
         </TableRow>
 
@@ -606,11 +606,11 @@
                 android:textColor="@color/textColor"
                 android:textSize="27dp"/>
             <TextView
-                android:id="@+id/Time5_d2"
+                android:id="@+id/weaterd1time15"
                 android:layout_height="match_parent"
                 android:text="@string/null1"
                 android:textColor="@color/textColor"
-                android:textSize="27dp"/>
+                android:textSize="20sp"/>
         </TableRow>
 
 
@@ -635,11 +635,11 @@
                 android:textSize="27dp"/>
 
             <TextView
-                android:id="@+id/Time6_d2"
+                android:id="@+id/weaterd1time18"
                 android:layout_height="match_parent"
                 android:text="@string/null1"
                 android:textColor="@color/textColor"
-                android:textSize="27dp"/>
+                android:textSize="20sp"/>
         </TableRow>
 
 
@@ -667,11 +667,11 @@
                 android:textSize="27dp"/>
 
             <TextView
-                android:id="@+id/Time7_d2"
+                android:id="@+id/weaterd1time21"
                 android:layout_height="match_parent"
                 android:text="@string/null1"
                 android:textColor="@color/textColor"
-                android:textSize="27dp"/>
+                android:textSize="20sp"/>
         </TableRow>
     </TableLayout>
 

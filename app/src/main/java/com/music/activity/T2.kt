@@ -19,6 +19,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.ContextCompat.getSystemService
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 val day = Array<String>(40) { "" };
@@ -27,6 +28,8 @@ val day2 = Array<String>(40) { "" };
 class T2(var City: String) : Runnable {
 
 
+    lateinit var weter: ArrayList<String?>
+    var html: Document? = null // страница
     var doc: Document? = null
     var docDay2: Document? = null;
     var doc2: Document? = null;
@@ -40,11 +43,18 @@ class T2(var City: String) : Runnable {
     private var time: Int = 0;
 
 
+    init {
+        weter = ArrayList<String?>(10)
+
+    }
+
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun run() {
         Log.e("CITY:", City.toString())
-
         var docCityHttp = mutableMapOf<String, List<String>>()
+
+
 
 
 
@@ -121,6 +131,10 @@ class T2(var City: String) : Runnable {
                         .data(docCityHttp.get(key)?.get(2), docCityHttp.get(key)?.get(3))
                         .get()
 
+                    html = Jsoup.connect(docCityHttp.get(key)?.get(0)).get()
+                    //weter  = html.select("div[class=weather-icon tooltip]")[0].attr("data-text")
+
+
                     docTime = Jsoup.connect(docCityHttp.get(key)?.get(1))
                         .data(docCityHttp.get(key)?.get(2), "day")
                         .get()
@@ -179,6 +193,36 @@ class T2(var City: String) : Runnable {
             n4 = doc2!!.getElementsByAttributeValue("class", "unit unit_wind_m_s").get(0) //ветер
             n5 = doc2!!.getElementsByAttributeValue("class", "day").get(0) //время
             nameCity = doc!!.getElementsByAttributeValue("class", "page-title")
+
+            weter.add(
+                html!!.select("div[class=weather-icon tooltip]")[0].attr("data-text").toString()
+                    .substringAfter(',').trim()) //
+            weter.add(
+                html!!.select("div[class=weather-icon tooltip]")[5].attr("data-text").toString()
+                    .substringAfter(',').trim()) //
+
+            weter.add(
+                html!!.select("div[class=weather-icon tooltip]")[2].attr("data-text").toString()
+                    .substringAfter(',').trim()) //
+
+            weter.add(
+                html!!.select("div[class=weather-icon tooltip]")[3].attr("data-text").toString()
+                    .substringAfter(',').trim()) //
+
+            weter.add(
+                html!!.select("div[class=weather-icon tooltip]")[4].attr("data-text").toString()
+                    .substringAfter(',').trim()) //
+
+            weter.add(
+                html!!.select("div[class=weather-icon tooltip]")[6].attr("data-text").toString()
+                    .substringAfter(',').trim()) //
+
+
+            weter.add(
+                html!!.select("div[class=weather-icon tooltip]")[7].attr("data-text").toString()
+                    .substringAfter(',').trim()) //
+
+
         } catch (e: Exception) {
 
         }
@@ -186,7 +230,7 @@ class T2(var City: String) : Runnable {
 
 
 
-        if (n2 != null || n3 != null || n4 != null || n5 != null) {
+        if (n2 != null || n3 != null || n4 != null || n5 != null || weter.isEmpty()) {
 
             day[0] = n2?.get(0)?.text().toString() // сейчас
             day[1] = n2?.get(3)?.text().toString() // сегодня днем
@@ -195,6 +239,15 @@ class T2(var City: String) : Runnable {
             day[4] = n2?.get(2)?.text().toString() // завтра днем
             day[5] = n3?.text().toString()  // текс погоды
             day[6] = n4?.text().toString() // ветер
+
+
+            day[20] = weter.get(0).toString() // ночь
+            day[21] = weter.get(1).toString() // день
+            day[22] = weter.get(2).toString() // 6
+            day[23] = weter.get(3).toString()// 12
+            day[24] = weter.get(1).toString()// 15
+            day[25] = weter.get(4).toString()// 18
+            day[26] = weter.get(5).toString()// 21
 
             day[8] = n2?.get(8)?.text().toString() //6 утра
             day[9] = n2?.get(9)?.text().toString() //9 утра
@@ -260,6 +313,16 @@ class T2(var City: String) : Runnable {
         }
     }
 
+    fun n20funNoch1(): String = if (!day.isEmpty())  day.get(20).toString()!! else "" // текст ночь
+    fun n21funDay1(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день 15
+
+    fun n22funDay6(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+    fun n23funDay9(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+    fun n24funDay12(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+    fun n25funDay18(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+    fun n26funDay21(): String = if (!day.isEmpty())  day.get(21).toString()!! else "" //текс день
+
+
 
     fun n0fun(): String = day[0]
     fun n5fun(): String = day[5]
@@ -282,6 +345,10 @@ class T2(var City: String) : Runnable {
     fun n12funDay2(): String = day2[12] //18  часов
     fun n13funDay2(): String = day2[13] //21  часов
 
+
+
+
+
     fun n14funTime(): String {
         if (day[14] == "" || day == null) {
             return "";
@@ -299,6 +366,7 @@ class T2(var City: String) : Runnable {
                 return ("noch")
         }
     }
+
 
     fun n6funVeter(): String {
         if (day[6] == null || day[6] == "") {

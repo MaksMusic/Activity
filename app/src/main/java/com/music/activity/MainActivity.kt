@@ -172,6 +172,16 @@ class MainActivity : AppCompatActivity() {
             binding.Time6D1d2.setText(t2.n12funDay2())
             binding.Time7D1d2.setText(t2.n13funDay2())
 
+            binding.weater1day.text = t2.n21funDay1().toString()
+            binding.weater1noch.text = t2.n20funNoch1().toString()
+
+            binding.weaterd1time6.text = t2.n22funDay6().toString()
+            binding.weaterd1time9.text = t2.n23funDay9().toString()
+            binding.weaterd1time12.text = t2.n24funDay12().toString()
+            binding.weaterd1time15.text = t2.n21funDay1().toString()
+            binding.weaterd1time18.text = t2.n25funDay18().toString()
+            binding.weaterd1time21.text = t2.n26funDay21().toString()
+
 
             // погода вверх инфо
             binding.day0.text = "Сейчас ${t2.n0fun()} "
